@@ -1,10 +1,11 @@
 # include <opencv2/opencv.hpp>
 # include <cstdio>
 # include <iostream>
-# include <math.h>
+# include "common/utils/math_utils.h"
 
 // 计算斜率
-double gradient(cv::Point2f pt1, cv::Point2f pt2)
+//根据直线起始点计算直线斜率 k=(y2-y1) / (x2-x1)
+double gradient(cv::Point2f& pt1, cv::Point2f& pt2)
 {
 	if (pt1.x == pt2.x)
 	{	
@@ -16,15 +17,18 @@ double gradient(cv::Point2f pt1, cv::Point2f pt2)
 	}	
 }
 
-//计算角度
+//计算角度 注意：两直线的夹角是两直线缩成的小于90°的角
+// tanθ=|（k1-k2）/ (1+k1*k2) |
 double getAngle(cv::Point2f &ArcCenter, cv::Point2f &StartPoint, cv::Point2f &EndPoint)
 {
 	//两直线斜率
     double k1 = gradient(StartPoint, ArcCenter);
 	double k2 = gradient(EndPoint, ArcCenter);
-
+    std::cout<< "k1 = "<< k1 <<std::endl;
+    std::cout<< "k2 = "<< k2 <<std::endl;
 	//弧度
-	double theta = atan(abs((k2 - k1) / (1 + k1 * k2)));
+	// double theta = atan(abs((k2 - k1) / (1 + k1 * k2)));
+    double theta = atan(abs((k2 - k1) / (1 + k1 * k2)));
     std::cout<< "theta = "<< theta<<std::endl;
 
 	//角度
@@ -54,14 +58,21 @@ int pointTest( )
     return 0;
 }
 
+
 int main( )
 {
-    
-    cv::Point2f ArcCenter(0,0);
-    cv::Point2f StartPoint(-8.3,-8.25);
-    cv::Point2f EndPoint(-8.6,-8.25);
 
-    double Angle = getAngle(ArcCenter,StartPoint,EndPoint);
-    
+    cv::Point2f ArcCenter(0,0);
+    cv::Point2f StartPoint(1,0);
+    cv::Point2f EndPoint(-1,1);
+
+    // double Angle = getAngle(ArcCenter,StartPoint,EndPoint);
+
+    // getAngelOfTwoVector(EndPoint,StartPoint,ArcCenter);
+    float yaw = CalcuVectorYaw(EndPoint,StartPoint);
+    double Angle = yaw * 180 / CV_PI;
+	  std::cout<< "Angle = "<< Angle<<std::endl;
+
+   
     return 0;
 }
