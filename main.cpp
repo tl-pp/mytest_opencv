@@ -1,7 +1,7 @@
 # include <opencv2/opencv.hpp>
 # include <cstdio>
 # include <iostream>
-# include "common/utils/math_utils.h"
+# include "math_utils.h"
 
 // 计算斜率
 //根据直线起始点计算直线斜率 k=(y2-y1) / (x2-x1)
