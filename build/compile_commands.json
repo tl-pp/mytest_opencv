@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/wty/wty/work/github/mytest/build",
+  "command": "/usr/bin/g++   -I/home/wty/wty/work/github/mytest/utils -isystem /usr/include/opencv4  -g   -o CMakeFiles/test.dir/main.cpp.o -c /home/wty/wty/work/github/mytest/main.cpp",
+  "file": "/home/wty/wty/work/github/mytest/main.cpp"
+},
+{
+  "directory": "/home/wty/wty/work/github/mytest/build/utils",
+  "command": "/usr/bin/g++   -I/usr/include/opencv4 -I/home/wty/wty/work/github/mytest/utils -I/home/wty/wty/work/github/mytest/utils/.  -g   -o CMakeFiles/utils.dir/math_utils.cpp.o -c /home/wty/wty/work/github/mytest/utils/math_utils.cpp",
+  "file": "/home/wty/wty/work/github/mytest/utils/math_utils.cpp"
+}
+]
